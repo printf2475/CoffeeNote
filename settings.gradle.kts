@@ -29,6 +29,8 @@ include(":core:designsystem")
 include(":core:data")
 include(":core:model")
 include(":core:domain")
+include(":core:database")
 
 // feature
 //include(":feature:calendar")
+
