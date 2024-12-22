@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.edc.database.dao.CoffeeNoteDao
-import com.edc.database.di.DaoModule
-import com.edc.database.di.DatabaseModule
 import com.edc.database.model.BrewingStepEntity
 import com.edc.database.model.BrewingTypeEntity
 import com.edc.database.model.CoffeeNoteEntity
@@ -15,7 +13,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import java.time.Clock
 import java.util.Date
 
 class CoffeeNoteDataBaseTest {
@@ -36,7 +33,7 @@ class CoffeeNoteDataBaseTest {
     fun closeDb() = db.close()
 
     @Test
-    fun fetchCoffeeNoteList() = runTest {
+    fun fetchCoffeeNoteListFromDB() = runTest {
         val coffeeNoteList = listOf(
             CoffeeNoteEntity(
                 coffeeName = "아메리카노",
