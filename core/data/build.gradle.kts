@@ -8,6 +8,10 @@ plugins {
 
 android {
     setNamespace("core.data")
+
+    defaultConfig {
+        testInstrumentationRunner = "com.edc.coffeenote.core.data.CustomTestRunner"
+    }
 }
 
 dependencies {
