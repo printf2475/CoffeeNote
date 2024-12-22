@@ -13,6 +13,4 @@ dependencies {
     api(projects.core.common)
     implementation(projects.core.util)
     implementation(projects.core.model)
-    implementation(libs.calendar.compose)
-    implementation(libs.wheelpickercompose)
 }
