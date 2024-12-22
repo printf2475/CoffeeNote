@@ -13,4 +13,5 @@ plugins {
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.android.test) apply false
     alias(libs.plugins.module.graph) apply true
+    alias(libs.plugins.room) apply false
 }

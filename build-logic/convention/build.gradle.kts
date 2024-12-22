@@ -11,7 +11,9 @@ java {
 }
 
 dependencies {
-    implementation(libs.android.gradle.plugin)
     implementation(libs.kotlin.gradlePlugin)
-    compileOnly(libs.compose.compiler.gradle.plugin)
+    implementation(libs.android.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
+    compileOnly(libs.compose.gradlePlugin)
 }
