@@ -6,13 +6,15 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object DaoModule {
     @Provides
-    fun providesTopicsDao(
+    @Singleton
+    fun providesCoffeeNoteDao(
         database: CoffeeNoteDataBase,
     ): CoffeeNoteDao = database.coffeeNoteDao()
 }
