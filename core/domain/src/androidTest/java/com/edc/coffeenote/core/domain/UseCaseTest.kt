@@ -3,6 +3,7 @@ package com.edc.coffeenote.core.domain
 import com.edc.coffeenote.core.data.repository.CoffeeNoteRepository
 import com.edc.coffeenote.core.domain.usecase.DeleteCoffeeNoteByIdUseCase
 import com.edc.coffeenote.core.domain.usecase.GetAllCoffeeNoteUseCase
+import com.edc.coffeenote.core.domain.usecase.GetCoffeeNoteByIdUseCase
 import com.edc.coffeenote.core.domain.usecase.UpsertCoffeeNoteUseCase
 import com.edc.coffeenote.core.model.BrewingStep
 import com.edc.coffeenote.core.model.BrewingType
@@ -30,7 +31,7 @@ class UseCaseTest {
     @Named("test_coffee_note_repository")
     lateinit var coffeeNoteRepository: CoffeeNoteRepository
 
-    val coffeeNoteSample = CoffeeNote(
+    private val coffeeNoteSample = CoffeeNote(
         coffeeName = "아메리카노",
         brewingRecipe = listOf(
             BrewingStep(type = BrewingType.Bloom),
@@ -60,6 +61,17 @@ class UseCaseTest {
         val coffeeNoteList = getAllCoffeeNoteUseCase().first()
         println("coffeeNoteList: $coffeeNoteList")
         assert(coffeeNoteList.contains(coffeeNoteSample))
+    }
+
+    @Test
+    fun getCoffeeNoteById() = runTest {
+        val upsertCoffeeNoteUseCase = UpsertCoffeeNoteUseCase(coffeeNoteRepository)
+        upsertCoffeeNoteUseCase(coffeeNoteSample).collect()
+
+        val getCoffeeNoteByIdUseCase = GetCoffeeNoteByIdUseCase(coffeeNoteRepository)
+        val coffeeNote = getCoffeeNoteByIdUseCase(coffeeNoteSample.id).first()
+        println("coffeeNote: $coffeeNote")
+        assert(coffeeNote == coffeeNoteSample)
     }
 
     @Test
