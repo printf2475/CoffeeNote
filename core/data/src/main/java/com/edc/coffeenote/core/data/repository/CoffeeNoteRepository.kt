@@ -9,9 +9,7 @@ interface CoffeeNoteRepository {
 
     fun getCoffeeNoteById(id: String): Flow<CoffeeNote>
 
-    suspend fun insertCoffeeNote(coffeeNote: CoffeeNote)
-
-    suspend fun updateCoffeeNote(coffeeNote: CoffeeNote)
+    suspend fun upsertCoffeeNote(coffeeNote: CoffeeNote)
 
     suspend fun deleteCoffeeNote(id: String)
 }

@@ -75,7 +75,7 @@ class CoffeeNoteRepositoryTest {
         )
 
         coffeeNoteList.forEach {
-            repository.insertCoffeeNote(it)
+            repository.upsertCoffeeNote(it)
         }
 
         val savedCoffeeNoteList = repository.getAllCoffeeNote().first()

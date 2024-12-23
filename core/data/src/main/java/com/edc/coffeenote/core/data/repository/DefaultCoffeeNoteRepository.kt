@@ -18,10 +18,7 @@ class DefaultCoffeeNoteRepository @Inject constructor(
     override fun getCoffeeNoteById(id: String): Flow<CoffeeNote> =
         coffeeNoteDao.getById(id).map(CoffeeNoteEntity::toModel)
 
-    override suspend fun insertCoffeeNote(coffeeNote: CoffeeNote) =
-        coffeeNoteDao.insert(coffeeNote.toEntity())
-
-    override suspend fun updateCoffeeNote(coffeeNote: CoffeeNote) =
+    override suspend fun upsertCoffeeNote(coffeeNote: CoffeeNote) =
         coffeeNoteDao.upsert(coffeeNote.toEntity())
 
     override suspend fun deleteCoffeeNote(id: String) =
