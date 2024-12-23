@@ -15,11 +15,8 @@ interface CoffeeNoteDao {
     @Query("SELECT * FROM coffee_note_entity WHERE id = :id")
     fun getById(id: String): Flow<CoffeeNoteEntity>
 
-    @Insert
-    fun insert(coffeeNoteEntityList: List<CoffeeNoteEntity>)
-
-    @Insert
-    fun insert(coffeeNoteEntity: CoffeeNoteEntity)
+    @Upsert
+    fun upsert(coffeeNoteEntityList: List<CoffeeNoteEntity>)
 
     @Upsert
     fun upsert(coffeeNoteEntity: CoffeeNoteEntity)

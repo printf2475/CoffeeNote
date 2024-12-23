@@ -70,7 +70,7 @@ class CoffeeNoteDataBaseTest {
             )
         )
 
-        coffeeNoteDao.insert(coffeeNoteList)
+        coffeeNoteDao.upsert(coffeeNoteList)
 
         val savedCoffeeNoteList = coffeeNoteDao.getAll().first()
 
