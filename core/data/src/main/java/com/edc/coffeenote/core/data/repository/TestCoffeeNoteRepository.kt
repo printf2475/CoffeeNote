@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Named
 
-class TestCoffeeNoteRepository @Inject constructor(
+internal class TestCoffeeNoteRepository @Inject constructor(
     @Named("test_coffee_note_dao") private val coffeeNoteDao: CoffeeNoteDao
 ) : CoffeeNoteRepository {
     override fun getAllCoffeeNote(): Flow<List<CoffeeNote>> =
