@@ -1,6 +1,5 @@
 
 import com.edc.convention.configureCoilAndroid
-import com.edc.convention.configureComposeAndroid
 import com.edc.convention.configureFirebaseAndroid
 import com.edc.convention.configureHiltAndroid
 import com.edc.convention.configureKotlinAndroid
@@ -17,7 +16,7 @@ plugins {
 configureKotlinAndroid()
 configureHiltAndroid()
 configureCoilAndroid()
-configureFirebaseAndroid()
+//configureFirebaseAndroid()
 
 dependencies {
     val libs = project.extensions.libs
