@@ -10,7 +10,11 @@ data class CoffeeNote(
     val flavorPoint: Int? = null,
     val notes: String? = null,
     val date: String
-)
+) {
+    val pouringAmountList: List<Int>
+        get() = brewingRecipe.filter { it.type == BrewingType.Pouring }
+            .mapNotNull { it.amountOfWater }
+}
 
 data class BeenInfo(
     val beenName: String,
