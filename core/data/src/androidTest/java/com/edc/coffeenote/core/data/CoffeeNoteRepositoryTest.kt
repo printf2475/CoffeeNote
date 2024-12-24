@@ -2,6 +2,7 @@ package com.edc.coffeenote.core.data
 
 import com.edc.coffeenote.core.data.repository.CoffeeNoteRepository
 import com.edc.coffeenote.core.data.repository.DefaultCoffeeNoteRepository
+import com.edc.coffeenote.core.model.BeenInfo
 import com.edc.coffeenote.core.model.BrewingStep
 import com.edc.coffeenote.core.model.BrewingType
 import com.edc.coffeenote.core.model.CoffeeNote
@@ -40,7 +41,10 @@ class CoffeeNoteRepositoryTest {
     fun fetchCoffeeNoteListFromRepository() = runTest {
         val coffeeNoteList = listOf(
             CoffeeNote(
-                coffeeName = "아메리카노",
+                beenInfo = BeenInfo(
+                    beenName = "KITSCH",
+                    roastery = "아이덴티티 커피랩"
+                ),
                 brewingRecipe = listOf(
                     BrewingStep(type = BrewingType.Bloom),
                     BrewingStep(type = BrewingType.Pouring),
@@ -51,7 +55,10 @@ class CoffeeNoteRepositoryTest {
                 date = Date().toGMTString()
             ),
             CoffeeNote(
-                coffeeName = "라떼",
+                beenInfo = BeenInfo(
+                    beenName = "CHILLIN",
+                    roastery = "아이덴티티 커피랩"
+                ),
                 brewingRecipe = listOf(
                     BrewingStep(type = BrewingType.Bloom),
                     BrewingStep(type = BrewingType.Pouring),
@@ -62,7 +69,10 @@ class CoffeeNoteRepositoryTest {
                 date = Date().toGMTString()
             ),
             CoffeeNote(
-                coffeeName = "스페셜티",
+                beenInfo = BeenInfo(
+                    beenName = "MID-CENTURY",
+                    roastery = "아이덴티티 커피랩"
+                ),
                 brewingRecipe = listOf(
                     BrewingStep(type = BrewingType.Bloom),
                     BrewingStep(type = BrewingType.Pouring),
