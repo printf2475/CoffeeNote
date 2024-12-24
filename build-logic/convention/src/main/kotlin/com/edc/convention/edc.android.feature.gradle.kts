@@ -27,7 +27,6 @@ dependencies {
     val libs = project.extensions.libs
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
-    implementation(project(":core:localize"))
     implementation(project(":core:util"))
     implementation(project(":core:domain"))
     implementation(project(":core:model"))

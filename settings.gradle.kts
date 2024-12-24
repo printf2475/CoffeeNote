@@ -32,5 +32,4 @@ include(":core:domain")
 include(":core:database")
 
 // feature
-//include(":feature:calendar")
-
+include(":feature:home")
