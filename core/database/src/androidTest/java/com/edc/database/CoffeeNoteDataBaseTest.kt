@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.edc.database.dao.CoffeeNoteDao
+import com.edc.database.model.BeenInfoEntity
 import com.edc.database.model.BrewingStepEntity
 import com.edc.database.model.BrewingTypeEntity
 import com.edc.database.model.CoffeeNoteEntity
@@ -36,7 +37,10 @@ class CoffeeNoteDataBaseTest {
     fun fetchCoffeeNoteListFromDB() = runTest {
         val coffeeNoteList = listOf(
             CoffeeNoteEntity(
-                coffeeName = "아메리카노",
+                beenInfo = BeenInfoEntity(
+                    beenName = "KITSCH",
+                    roastery = "아이덴티티 커피랩"
+                ),
                 brewingRecipe = listOf(
                     BrewingStepEntity(type = BrewingTypeEntity.Bloom),
                     BrewingStepEntity(type = BrewingTypeEntity.Pouring),
@@ -47,7 +51,10 @@ class CoffeeNoteDataBaseTest {
                 date = Date().toGMTString()
             ),
             CoffeeNoteEntity(
-                coffeeName = "라떼",
+                beenInfo = BeenInfoEntity(
+                    beenName = "CHILLIN",
+                    roastery = "아이덴티티 커피랩"
+                ),
                 brewingRecipe = listOf(
                     BrewingStepEntity(type = BrewingTypeEntity.Bloom),
                     BrewingStepEntity(type = BrewingTypeEntity.Pouring),
@@ -58,7 +65,10 @@ class CoffeeNoteDataBaseTest {
                 date = Date().toGMTString()
             ),
             CoffeeNoteEntity(
-                coffeeName = "스페셜티",
+                beenInfo = BeenInfoEntity(
+                    beenName = "MID-CENTURY",
+                    roastery = "아이덴티티 커피랩"
+                ),
                 brewingRecipe = listOf(
                     BrewingStepEntity(type = BrewingTypeEntity.Bloom),
                     BrewingStepEntity(type = BrewingTypeEntity.Pouring),
