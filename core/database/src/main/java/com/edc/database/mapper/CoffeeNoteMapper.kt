@@ -1,25 +1,29 @@
 package com.edc.database.mapper
 
+import com.edc.coffeenote.core.model.BeenInfo
 import com.edc.coffeenote.core.model.BrewingStep
 import com.edc.coffeenote.core.model.BrewingType
 import com.edc.coffeenote.core.model.CoffeeNote
+import com.edc.database.model.BeenInfoEntity
 import com.edc.database.model.BrewingStepEntity
 import com.edc.database.model.BrewingTypeEntity
 import com.edc.database.model.CoffeeNoteEntity
 
 fun CoffeeNote.toEntity() = CoffeeNoteEntity(
     id = id,
-    coffeeName = coffeeName,
+    beenInfo = beenInfo.toEntity(),
     brewingRecipe = brewingRecipe.map(BrewingStep::toEntity),
     notes = notes,
+    flavorPoint = flavorPoint,
     date = date
 )
 
 fun CoffeeNoteEntity.toModel() = CoffeeNote(
     id = id,
-    coffeeName = coffeeName,
+    beenInfo = beenInfo.toModel(),
     brewingRecipe = brewingRecipe.map(BrewingStepEntity::toModel),
     notes = notes,
+    flavorPoint = flavorPoint,
     date = date
 )
 
@@ -47,3 +51,16 @@ fun BrewingTypeEntity.toModel() = when (this) {
     BrewingTypeEntity.Pouring -> BrewingType.Pouring
 }
 
+fun BeenInfo.toEntity() = BeenInfoEntity(
+    beenName = beenName,
+    roastery = roastery,
+    flavorNotes = flavorNotes,
+    roastingPoint = roastingPoint
+)
+
+fun BeenInfoEntity.toModel() = BeenInfo(
+    beenName = beenName,
+    roastery = roastery,
+    flavorNotes = flavorNotes,
+    roastingPoint = roastingPoint
+)
