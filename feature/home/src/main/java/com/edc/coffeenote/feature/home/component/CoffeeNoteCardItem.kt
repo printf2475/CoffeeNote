@@ -1,4 +1,4 @@
-package com.edc.feature.home.screen
+package com.edc.coffeenote.feature.home.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

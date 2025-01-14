@@ -1,4 +1,4 @@
-package com.edc.feature.home
+package com.edc.coffeenote.feature.home
 
 import org.junit.Test
 

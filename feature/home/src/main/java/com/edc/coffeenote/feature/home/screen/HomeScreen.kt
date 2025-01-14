@@ -1,4 +1,4 @@
-package com.edc.feature.home.screen
+package com.edc.coffeenote.feature.home.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,21 +15,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.edc.coffeenote.core.model.CoffeeNote
-import com.edc.feature.home.component.HomeTopBar
+import com.edc.coffeenote.feature.home.component.CoffeeNoteCardItem
+import com.edc.coffeenote.feature.home.component.HomeTopBar
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toPersistentList
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
     coffeeNoteList: PersistentList<CoffeeNote>,
     onCoffeeNoteClick: (CoffeeNote) -> Unit,
+    onAddCoffeeClick: () -> Unit
 ) {
     Scaffold(
         modifier = modifier,
         topBar = {
-            HomeTopBar(modifier = Modifier.fillMaxWidth())
+            HomeTopBar(
+                modifier = Modifier.fillMaxWidth(),
+                onAddButtonClick = onAddCoffeeClick
+            )
         }
     ) { innerPadding ->
         Column(
@@ -53,9 +57,9 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         beenName = it.beenInfo.beenName,
                         roastery = it.beenInfo.roastery ?: "",
-                        notes = it.beenInfo.flavorNotes ?: persistentListOf(),
-                        pouringAmountList = it.pouringAmountList.toPersistentList(),
-                        createDate = it.date,
+                        notes = it.beenInfo.flavorNotes,
+                        pouringAmountList = persistentListOf(),
+                        createDate = it.date.toString(),
                         onClick = { onCoffeeNoteClick(it) },
                     )
                 }

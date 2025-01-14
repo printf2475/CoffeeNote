@@ -1,4 +1,4 @@
-package com.edc.feature.home
+package com.edc.coffeenote.feature.home
 
 import androidx.lifecycle.ViewModel
 import com.edc.coffeenote.core.domain.usecase.GetAllCoffeeNoteUseCase
@@ -35,5 +35,9 @@ class HomeViewModel @Inject constructor(
 
     fun onCoffeeNoteClick(coffeeNote: CoffeeNote) = intent {
         postSideEffect(HomeContract.SideEffect.NavigateDetailCoffeeNote(coffeeNote))
+    }
+
+    fun onAddCoffeeNoteClick() = intent {
+        postSideEffect(HomeContract.SideEffect.NavigateAddCoffeeNote)
     }
 }

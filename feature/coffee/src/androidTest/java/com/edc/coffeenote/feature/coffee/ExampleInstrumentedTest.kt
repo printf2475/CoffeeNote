@@ -1,4 +1,4 @@
-package com.edc.feature.home
+package com.edc.coffeenote.feature.coffee
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.edc.feature.home", appContext.packageName)
+        assertEquals("com.edc.coffeenote.feature.coffee", appContext.packageName)
     }
 }
