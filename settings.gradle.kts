@@ -33,3 +33,4 @@ include(":core:database")
 
 // feature
 include(":feature:home")
+include(":feature:coffee")
