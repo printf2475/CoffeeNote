@@ -6,11 +6,12 @@ import com.edc.coffeenote.core.domain.usecase.GetAllCoffeeNoteUseCase
 import com.edc.coffeenote.core.domain.usecase.GetCoffeeNoteByIdUseCase
 import com.edc.coffeenote.core.domain.usecase.UpsertCoffeeNoteUseCase
 import com.edc.coffeenote.core.model.BeenInfo
-import com.edc.coffeenote.core.model.BrewingStep
-import com.edc.coffeenote.core.model.BrewingType
+import com.edc.coffeenote.core.model.BrewingRecipe
+import com.edc.coffeenote.core.model.CoffeeBrewingMethod
 import com.edc.coffeenote.core.model.CoffeeNote
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
@@ -37,13 +38,27 @@ class UseCaseTest {
             beenName = "KITSCH",
             roastery = "아이덴티티 커피랩"
         ),
-        brewingRecipe = listOf(
-            BrewingStep(type = BrewingType.Bloom),
-            BrewingStep(type = BrewingType.Pouring),
-            BrewingStep(type = BrewingType.Pouring),
-            BrewingStep(type = BrewingType.Pouring),
-        ),
-        date = Date().toString()
+        brewingRecipeList = listOf(
+            BrewingRecipe(
+                name = "4:6",
+                method = CoffeeBrewingMethod.HAND_DRIP,
+                steps = listOf(),
+                date = Date()
+            ),
+            BrewingRecipe(
+                name = "테츠야 레시피",
+                method = CoffeeBrewingMethod.HAND_DRIP,
+                steps = listOf(),
+                date = Date()
+            ),
+            BrewingRecipe(
+                name = "기본 레시피",
+                method = CoffeeBrewingMethod.HAND_DRIP,
+                steps = listOf(),
+                date = Date()
+            ),
+        ).toPersistentList(),
+        date = Date()
     )
 
     @Before
