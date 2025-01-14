@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ea43a990f0cadf3a3b6a1879ac06749e",
+    "identityHash": "acea3dc589c00281cb40a1b79482186a",
     "entities": [
       {
         "tableName": "coffee_note_entity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `coffee_name` TEXT NOT NULL, `brewing_recipe` TEXT NOT NULL, `notes` TEXT, `date` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `been_info_id` TEXT NOT NULL, `brewing_recipe_list` TEXT NOT NULL, `notes` TEXT, `date` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -15,14 +15,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "coffeeName",
-            "columnName": "coffee_name",
+            "fieldPath": "beenInfoId",
+            "columnName": "been_info_id",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "brewingRecipe",
-            "columnName": "brewing_recipe",
+            "fieldPath": "brewingRecipeList",
+            "columnName": "brewing_recipe_list",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -35,7 +35,51 @@
           {
             "fieldPath": "date",
             "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "been_info_entity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `been_name` TEXT NOT NULL, `roastery` TEXT, `flavor_notes` TEXT NOT NULL, `roasting_point` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "beenName",
+            "columnName": "been_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "roastery",
+            "columnName": "roastery",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flavorNotes",
+            "columnName": "flavor_notes",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "roastingPoint",
+            "columnName": "roasting_point",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -52,7 +96,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ea43a990f0cadf3a3b6a1879ac06749e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'acea3dc589c00281cb40a1b79482186a')"
     ]
   }
 }
