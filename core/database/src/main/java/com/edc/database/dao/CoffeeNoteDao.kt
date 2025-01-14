@@ -1,29 +1,44 @@
 package com.edc.database.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
+import com.edc.database.model.BeenInfoEntity
 import com.edc.database.model.CoffeeNoteEntity
+import com.edc.database.model.CoffeeNoteWithBeenInfo
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CoffeeNoteDao {
+
+    @Transaction
     @Query("SELECT * FROM coffee_note_entity")
-    fun getAll(): Flow<List<CoffeeNoteEntity>>
+    fun getCoffeeNoteAll(): Flow<List<CoffeeNoteWithBeenInfo>>
 
     @Query("SELECT * FROM coffee_note_entity WHERE id = :id")
-    fun getById(id: String): Flow<CoffeeNoteEntity>
+    fun getCoffeeNoteById(id: String): Flow<CoffeeNoteWithBeenInfo>
 
     @Upsert
-    fun upsert(coffeeNoteEntityList: List<CoffeeNoteEntity>)
+    fun upsertCoffeeNote(coffeeNoteEntityList: List<CoffeeNoteEntity>)
 
     @Upsert
-    fun upsert(coffeeNoteEntity: CoffeeNoteEntity)
+    fun upsertCoffeeNote(coffeeNoteEntity: CoffeeNoteEntity)
 
 
     @Query("DELETE FROM coffee_note_entity WHERE id = :id")
-    fun deleteById(id: String)
+    fun deleteCoffeeNoteById(id: String)
 
+    @Query("SELECT * FROM been_info_entity")
+    fun getCoffeeBeenAll(): Flow<List<BeenInfoEntity>>
+
+    @Query("SELECT * FROM been_info_entity WHERE id = :id")
+    fun getCoffeeBeenById(id: String): Flow<BeenInfoEntity>
+
+    @Upsert
+    fun upsertCoffeeBeen(coffeeBeenEntity: BeenInfoEntity)
+
+    @Query("DELETE FROM been_info_entity WHERE id = :id")
+    fun deleteCoffeeBeenById(id: String)
 
 }

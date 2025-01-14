@@ -1,45 +1,46 @@
 package com.edc.database.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.collections.immutable.PersistentList
+import androidx.room.Relation
 import java.util.UUID
+
+data class CoffeeNoteWithBeenInfo(
+    @Embedded val coffeeNote: CoffeeNoteEntity,
+    @Relation(
+        parentColumn = "been_info_id",
+        entityColumn = "id"
+    )
+    val beenInfo: BeenInfoEntity
+)
 
 @Entity(tableName = "coffee_note_entity")
 data class CoffeeNoteEntity(
     @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
-    @ColumnInfo("been_info")
-    val beenInfo: BeenInfoEntity,
-    @ColumnInfo(name = "brewing_recipe")
-    val brewingRecipe: List<BrewingStepEntity>,
-    @ColumnInfo("flavor_point")
-    val flavorPoint: Int? = null,
+    @ColumnInfo("been_info_id")
+    val beenInfoId: String,
+    @ColumnInfo(name = "brewing_recipe_list")
+    val brewingRecipeList: List<BrewingRecipeEntity>,
+    @ColumnInfo("notes")
     val notes: String? = null,
-    val date: String
+    @ColumnInfo("date")
+    val date: Long
 )
 
-data class BrewingStepEntity(
-    val type: BrewingTypeEntity,
-    val time: Int = type.defaultTime,
-    @ColumnInfo("amount_of_water")
-    val amountOfWater: Int? = null,
-    val description: String? = null
-)
-
-enum class BrewingTypeEntity(val defaultTime: Int) {
-    Bloom(30),
-    Pouring(10),
-}
-
+@Entity(tableName = "been_info_entity")
 data class BeenInfoEntity(
+    @PrimaryKey
+    val id: String = UUID.randomUUID().toString(),
     @ColumnInfo("been_name")
     val beenName: String,
+    @ColumnInfo("roastery")
     val roastery: String? = null,
     @ColumnInfo("flavor_notes")
-    val flavorNotes: PersistentList<String>? = null,
+    val flavorNotes: List<String> = emptyList(),
     @ColumnInfo("roasting_point")
-    val roastingPoint: Int? = null,
+    val roastingPoint: Int = 3,
 )
 

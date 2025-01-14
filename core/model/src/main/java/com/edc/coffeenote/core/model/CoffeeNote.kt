@@ -1,24 +1,23 @@
 package com.edc.coffeenote.core.model
 
 import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
+import java.util.Date
 import java.util.UUID
 
 data class CoffeeNote(
     val id: String = UUID.randomUUID().toString(),
-    val beenInfo: BeenInfo,
-    val brewingRecipe: List<BrewingStep>,
-    val flavorPoint: Int? = null,
+    val beenInfo: BeenInfo = BeenInfo(),
+    val brewingRecipeList: PersistentList<BrewingRecipe> = persistentListOf(),
     val notes: String? = null,
-    val date: String
-) {
-    val pouringAmountList: List<Int>
-        get() = brewingRecipe.filter { it.type == BrewingType.Pouring }
-            .mapNotNull { it.amountOfWater }
-}
+    val date: Date = Date()
+)
+
 
 data class BeenInfo(
-    val beenName: String,
+    val id: String = UUID.randomUUID().toString(),
+    val beenName: String = "",
     val roastery: String? = null,
-    val flavorNotes: PersistentList<String>? = null,
-    val roastingPoint: Int? = null,
+    val flavorNotes: PersistentList<String> = persistentListOf(),
+    val roastingPoint: Int = 3,
 )
