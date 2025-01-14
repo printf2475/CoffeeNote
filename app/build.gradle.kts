@@ -44,6 +44,9 @@ dependencies {
     implementation(projects.core.model)
     implementation(projects.core.util)
     implementation(projects.core.designsystem)
+    implementation(projects.feature.home)
+    implementation(projects.feature.coffee)
+
 
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.profileinstaller)
