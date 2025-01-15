@@ -1,6 +1,8 @@
 package com.edc.coffeenote.core.data.di
 
+import com.edc.coffeenote.core.data.repository.CoffeeBeenRepository
 import com.edc.coffeenote.core.data.repository.CoffeeNoteRepository
+import com.edc.coffeenote.core.data.repository.DefaultCoffeeBeenRepository
 import com.edc.coffeenote.core.data.repository.DefaultCoffeeNoteRepository
 import com.edc.coffeenote.core.data.repository.TestCoffeeNoteRepository
 import dagger.Binds
@@ -26,5 +28,11 @@ internal interface RepositoryModule {
     fun bindsTestCoffeeNoteRepository(
         coffeeNoteRepository: TestCoffeeNoteRepository
     ): CoffeeNoteRepository
+
+    @Binds
+    @Singleton
+    fun bindsCoffeeBeenRepository(
+        coffeeBeenRepository: DefaultCoffeeBeenRepository
+    ): CoffeeBeenRepository
 
 }
