@@ -1,5 +1,6 @@
 package com.edc.coffeenote.feature.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.edc.coffeenote.core.domain.usecase.GetAllCoffeeNoteUseCase
 import com.edc.coffeenote.core.model.CoffeeNote
@@ -22,7 +23,10 @@ class HomeViewModel @Inject constructor(
 
     fun getAllCoffeeNote() = intent {
         getAllCoffeeNoteUseCase()
-            .catch { postSideEffect(HomeContract.SideEffect.ShowToast("CoffeeNotes Load Error")) }
+            .catch {
+                Log.e(TAG, "getAllCoffeeNote: ", it)
+                postSideEffect(HomeContract.SideEffect.ShowToast("CoffeeNotes Load Error"))
+            }
             .collectLatest { coffeeNoteList ->
                 reduce {
                     state.copy(
@@ -39,5 +43,9 @@ class HomeViewModel @Inject constructor(
 
     fun onAddCoffeeNoteClick() = intent {
         postSideEffect(HomeContract.SideEffect.NavigateAddCoffeeNote)
+    }
+
+    companion object {
+        private const val TAG: String = "HomeViewModel"
     }
 }
