@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
-import com.edc.database.model.BeenInfoEntity
+import com.edc.database.model.CoffeeBeenInfoEntity
 import com.edc.database.model.CoffeeNoteEntity
 import com.edc.database.model.CoffeeNoteWithBeenInfo
 import kotlinx.coroutines.flow.Flow
@@ -30,13 +30,13 @@ interface CoffeeNoteDao {
     fun deleteCoffeeNoteById(id: String)
 
     @Query("SELECT * FROM been_info_entity")
-    fun getCoffeeBeenAll(): Flow<List<BeenInfoEntity>>
+    fun getCoffeeBeenAll(): Flow<List<CoffeeBeenInfoEntity>>
 
     @Query("SELECT * FROM been_info_entity WHERE id = :id")
-    fun getCoffeeBeenById(id: String): Flow<BeenInfoEntity>
+    fun getCoffeeBeenById(id: String): Flow<CoffeeBeenInfoEntity>
 
     @Upsert
-    fun upsertCoffeeBeen(coffeeBeenEntity: BeenInfoEntity)
+    fun upsertCoffeeBeen(coffeeBeenEntity: CoffeeBeenInfoEntity)
 
     @Query("DELETE FROM been_info_entity WHERE id = :id")
     fun deleteCoffeeBeenById(id: String)

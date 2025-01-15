@@ -2,9 +2,7 @@ package com.edc.coffeenote.core.data
 
 import com.edc.coffeenote.core.data.repository.CoffeeNoteRepository
 import com.edc.coffeenote.core.data.repository.DefaultCoffeeNoteRepository
-import com.edc.coffeenote.core.model.BeenInfo
-import com.edc.coffeenote.core.model.BrewingStep
-import com.edc.coffeenote.core.model.BrewingType
+import com.edc.coffeenote.core.model.CoffeeBeenInfo
 import com.edc.coffeenote.core.model.CoffeeNote
 import com.edc.database.dao.CoffeeNoteDao
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -41,46 +39,28 @@ class CoffeeNoteRepositoryTest {
     fun fetchCoffeeNoteListFromRepository() = runTest {
         val coffeeNoteList = listOf(
             CoffeeNote(
-                beenInfo = BeenInfo(
+                coffeeBeenInfo = CoffeeBeenInfo(
                     beenName = "KITSCH",
                     roastery = "아이덴티티 커피랩"
                 ),
-                brewingRecipe = listOf(
-                    BrewingStep(type = BrewingType.Bloom),
-                    BrewingStep(type = BrewingType.Pouring),
-                    BrewingStep(type = BrewingType.Pouring),
-                    BrewingStep(type = BrewingType.Pouring),
-                ),
                 notes = "",
-                date = Date().toGMTString()
+                date = Date()
             ),
             CoffeeNote(
-                beenInfo = BeenInfo(
+                coffeeBeenInfo = CoffeeBeenInfo(
                     beenName = "CHILLIN",
                     roastery = "아이덴티티 커피랩"
                 ),
-                brewingRecipe = listOf(
-                    BrewingStep(type = BrewingType.Bloom),
-                    BrewingStep(type = BrewingType.Pouring),
-                    BrewingStep(type = BrewingType.Pouring),
-                    BrewingStep(type = BrewingType.Pouring),
-                ),
                 notes = "",
-                date = Date().toGMTString()
+                date = Date()
             ),
             CoffeeNote(
-                beenInfo = BeenInfo(
+                coffeeBeenInfo = CoffeeBeenInfo(
                     beenName = "MID-CENTURY",
                     roastery = "아이덴티티 커피랩"
                 ),
-                brewingRecipe = listOf(
-                    BrewingStep(type = BrewingType.Bloom),
-                    BrewingStep(type = BrewingType.Pouring),
-                    BrewingStep(type = BrewingType.Pouring),
-                    BrewingStep(type = BrewingType.Pouring),
-                ),
                 notes = "",
-                date = Date().toGMTString()
+                date = Date()
             )
         )
 

@@ -5,7 +5,7 @@ import com.edc.coffeenote.core.domain.usecase.DeleteCoffeeNoteByIdUseCase
 import com.edc.coffeenote.core.domain.usecase.GetAllCoffeeNoteUseCase
 import com.edc.coffeenote.core.domain.usecase.GetCoffeeNoteByIdUseCase
 import com.edc.coffeenote.core.domain.usecase.UpsertCoffeeNoteUseCase
-import com.edc.coffeenote.core.model.BeenInfo
+import com.edc.coffeenote.core.model.CoffeeBeenInfo
 import com.edc.coffeenote.core.model.BrewingRecipe
 import com.edc.coffeenote.core.model.CoffeeBrewingMethod
 import com.edc.coffeenote.core.model.CoffeeNote
@@ -34,7 +34,7 @@ class UseCaseTest {
     lateinit var coffeeNoteRepository: CoffeeNoteRepository
 
     private val coffeeNoteSample = CoffeeNote(
-        beenInfo = BeenInfo(
+        coffeeBeenInfo = CoffeeBeenInfo(
             beenName = "KITSCH",
             roastery = "아이덴티티 커피랩"
         ),
@@ -99,7 +99,7 @@ class UseCaseTest {
         upsertCoffeeNoteUseCase(coffeeNoteSample).collect()
 
         val copyCoffeeNoteSample = coffeeNoteSample.copy(
-            beenInfo = coffeeNoteSample.beenInfo.copy(
+            coffeeBeenInfo = coffeeNoteSample.coffeeBeenInfo.copy(
                 beenName = "스타벅스 홀빈",
                 roastery = "스타벅스"
             )

@@ -2,7 +2,7 @@ package com.edc.coffeenote.navigation
 
 import androidx.annotation.DrawableRes
 import com.edc.coffeenote.R
-import com.edc.coffeenote.feature.coffee.edit.navigate.EditCoffeeRoute
+import com.edc.coffeenote.feature.coffee_been.edit.navigate.EditCoffeeRoute
 import com.edc.coffeenote.feature.home.navigate.HomeRoute
 import kotlin.reflect.KClass
 

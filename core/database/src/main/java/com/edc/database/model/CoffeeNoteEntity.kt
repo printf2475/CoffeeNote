@@ -11,9 +11,10 @@ data class CoffeeNoteWithBeenInfo(
     @Embedded val coffeeNote: CoffeeNoteEntity,
     @Relation(
         parentColumn = "been_info_id",
-        entityColumn = "id"
+        entityColumn = "id",
+        entity = CoffeeBeenInfoEntity::class
     )
-    val beenInfo: BeenInfoEntity
+    val beenInfo: CoffeeBeenInfoEntity
 )
 
 @Entity(tableName = "coffee_note_entity")
@@ -31,7 +32,7 @@ data class CoffeeNoteEntity(
 )
 
 @Entity(tableName = "been_info_entity")
-data class BeenInfoEntity(
+data class CoffeeBeenInfoEntity(
     @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
     @ColumnInfo("been_name")

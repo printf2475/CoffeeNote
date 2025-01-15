@@ -1,12 +1,12 @@
 package com.edc.database.mapper
 
-import com.edc.coffeenote.core.model.BeenInfo
+import com.edc.coffeenote.core.model.CoffeeBeenInfo
 import com.edc.coffeenote.core.model.BrewingRecipe
 import com.edc.coffeenote.core.model.BrewingStep
 import com.edc.coffeenote.core.model.BrewingStepType
 import com.edc.coffeenote.core.model.CoffeeBrewingMethod
 import com.edc.coffeenote.core.model.CoffeeNote
-import com.edc.database.model.BeenInfoEntity
+import com.edc.database.model.CoffeeBeenInfoEntity
 import com.edc.database.model.BrewingRecipeEntity
 import com.edc.database.model.BrewingStepEntity
 import com.edc.database.model.BrewingStepTypeEntity
@@ -18,7 +18,7 @@ import java.util.Date
 
 fun CoffeeNote.toEntity() = CoffeeNoteEntity(
     id = id,
-    beenInfoId = beenInfo.id,
+    beenInfoId = coffeeBeenInfo.id,
     brewingRecipeList = brewingRecipeList.map(BrewingRecipe::toEntity),
     notes = notes,
     date = date.time
@@ -26,7 +26,7 @@ fun CoffeeNote.toEntity() = CoffeeNoteEntity(
 
 fun CoffeeNoteWithBeenInfo.toModel() = CoffeeNote(
     id = coffeeNote.id,
-    beenInfo = beenInfo.toModel(),
+    coffeeBeenInfo = beenInfo.toModel(),
     brewingRecipeList = coffeeNote.brewingRecipeList.map(BrewingRecipeEntity::toModel).toPersistentList(),
     notes = coffeeNote.notes,
     date = Date(coffeeNote.date)
@@ -89,14 +89,14 @@ fun BrewingStepTypeEntity.toModel() = when (this) {
     BrewingStepTypeEntity.POURING -> BrewingStepType.POURING
 }
 
-fun BeenInfo.toEntity() = BeenInfoEntity(
+fun CoffeeBeenInfo.toEntity() = CoffeeBeenInfoEntity(
     beenName = beenName,
     roastery = roastery,
     flavorNotes = flavorNotes,
     roastingPoint = roastingPoint
 )
 
-fun BeenInfoEntity.toModel() = BeenInfo(
+fun CoffeeBeenInfoEntity.toModel() = CoffeeBeenInfo(
     beenName = beenName,
     roastery = roastery,
     flavorNotes = flavorNotes.toPersistentList(),

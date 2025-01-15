@@ -10,8 +10,10 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.edc.coffeenote.component.NavigationBar
-import com.edc.coffeenote.feature.coffee.edit.navigate.editCoffeeScreen
-import com.edc.coffeenote.feature.coffee.edit.navigate.navigateToEditCoffee
+import com.edc.coffeenote.feature.coffee_been.edit.navigate.editCoffeeScreen
+import com.edc.coffeenote.feature.coffee_been.edit.navigate.navigateToEditCoffee
+import com.edc.coffeenote.feature.coffee_been.list.navigate.coffeeBeenListScreen
+import com.edc.coffeenote.feature.coffee_been.list.navigate.navigateToCoffeeBeenList
 import com.edc.coffeenote.feature.home.navigate.HomeRoute
 import com.edc.coffeenote.feature.home.navigate.homeScreen
 import com.edc.coffeenote.feature.home.navigate.navigateToHome
@@ -32,7 +34,7 @@ internal fun AppNavHost(
                 onClick = { destination ->
                     when (destination) {
                         MainDestination.Home -> navController.navigateToHome()
-                        MainDestination.Coffee -> navController.navigateToEditCoffee()
+                        MainDestination.Coffee -> navController.navigateToCoffeeBeenList()
                         else -> Unit
                     }
                 }
@@ -51,6 +53,11 @@ internal fun AppNavHost(
             homeScreen(
                 onNavigateDetailCoffeeNote = {},
                 onNavigateAddCoffeeNote = {}
+            )
+
+            coffeeBeenListScreen(
+                onNavigateCoffeeBeenDetailScreen = { },
+                onNavigateAddCoffeeBeenScreen = navController::navigateToEditCoffee
             )
 
             editCoffeeScreen(

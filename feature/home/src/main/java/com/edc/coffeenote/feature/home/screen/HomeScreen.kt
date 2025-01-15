@@ -55,9 +55,9 @@ fun HomeScreen(
                 ) {
                     CoffeeNoteCardItem(
                         modifier = Modifier.fillMaxWidth(),
-                        beenName = it.beenInfo.beenName,
-                        roastery = it.beenInfo.roastery ?: "",
-                        notes = it.beenInfo.flavorNotes,
+                        beenName = it.coffeeBeenInfo.beenName,
+                        roastery = it.coffeeBeenInfo.roastery ?: "",
+                        notes = it.coffeeBeenInfo.flavorNotes,
                         pouringAmountList = persistentListOf(),
                         createDate = it.date.toString(),
                         onClick = { onCoffeeNoteClick(it) },

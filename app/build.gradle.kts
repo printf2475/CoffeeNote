@@ -45,7 +45,7 @@ dependencies {
     implementation(projects.core.util)
     implementation(projects.core.designsystem)
     implementation(projects.feature.home)
-    implementation(projects.feature.coffee)
+    implementation(projects.feature.coffeeBeen)
 
 
     implementation(libs.kotlinx.serialization.json)
