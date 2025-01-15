@@ -2,6 +2,7 @@ package com.edc.coffeenote.feature.home
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -31,6 +32,10 @@ fun HomeRoute(
             is HomeContract.SideEffect.ShowToast ->
                 Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.getAllCoffeeNote()
     }
 
     HomeScreen(
